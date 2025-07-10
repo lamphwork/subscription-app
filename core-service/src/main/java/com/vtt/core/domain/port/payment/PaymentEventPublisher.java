@@ -1,8 +1,8 @@
 package com.vtt.core.domain.port.payment;
 
-import com.vtt.core.domain.model.Payment;
+import com.vtt.core.domain.model.PaymentRequest;
 
 public interface PaymentEventPublisher {
 
-    void publish(Payment payment);
+    void publish(PaymentRequest paymentRequest);
 }

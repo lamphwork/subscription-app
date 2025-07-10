@@ -11,6 +11,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class CreatePaymentInput {
 
+    private String paymentSource;
     private String business;
     private String sourceId;
     private BigDecimal amount;

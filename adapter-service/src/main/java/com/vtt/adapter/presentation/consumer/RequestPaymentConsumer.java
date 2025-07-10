@@ -26,13 +26,9 @@ public class RequestPaymentConsumer {
         log.info("Received payment request : {}", message);
 
         PaymentRequestMessage paymentRequest = objectMapper.readValue(message, PaymentRequestMessage.class);
-        DebitInput debitInput = new DebitInput(
-                paymentRequest.getPaymentId(),
-                paymentRequest.getPaymentSource(),
-                paymentRequest.getBusiness(),
-                paymentRequest.getAmount(),
-                paymentRequest.getDescription()
-        );
+        log.info("Payment request : {}", paymentRequest);
+        DebitInput debitInput = new DebitInput();
+        // TODO fill data debitInput
         debitHandler.handle(debitInput);
     }
 }

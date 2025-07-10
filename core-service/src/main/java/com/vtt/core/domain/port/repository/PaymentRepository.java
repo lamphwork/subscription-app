@@ -1,14 +1,14 @@
 package com.vtt.core.domain.port.repository;
 
-import com.vtt.core.domain.model.Payment;
+import com.vtt.core.domain.model.PaymentRequest;
 
 import java.util.Optional;
 
 public interface PaymentRepository {
 
-    Optional<Payment> findById(Long id);
+    Optional<PaymentRequest> findById(Long id);
 
-    Payment save(Payment payment);
+    PaymentRequest save(PaymentRequest paymentRequest);
 
-    Payment update(Payment payment);
+    PaymentRequest update(PaymentRequest paymentRequest);
 }

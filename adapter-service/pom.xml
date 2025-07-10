@@ -6,8 +6,8 @@
 
     <parent>
         <groupId>com.vtt</groupId>
-        <artifactId>subscription-mn</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <artifactId>custPayment-mn</artifactId>
+        <version>0.0.1</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 

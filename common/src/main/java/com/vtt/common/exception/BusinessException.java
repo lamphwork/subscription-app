@@ -1,7 +1,8 @@
 package com.vtt.common.exception;
 
-import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter
 public class BusinessException extends RuntimeException {
     protected String errorCode;
     protected String errorMsg;

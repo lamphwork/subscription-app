@@ -8,6 +8,7 @@ import com.vtt.adapter.domain.port.payment.params.DebitInput;
 import com.vtt.adapter.domain.port.payment.params.DebitResult;
 import com.vtt.common.exception.BusinessException;
 import com.vtt.common.kafka.message.PaymentResultMessage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Component
 public class DelegateDebitHandler implements DebitHandler {
 
@@ -37,12 +39,9 @@ public class DelegateDebitHandler implements DebitHandler {
         }
 
         DebitResult result = connector.debit(input);
-        PaymentResultMessage paymentResultMessage = new PaymentResultMessage(
-                input.getPaymentId(),
-                input.getBusiness(),
-                result.getRefId(),
-                result.isSuccess()
-        );
+        log.info("Debit result: {}", result);
+        PaymentResultMessage paymentResultMessage = new PaymentResultMessage();
+        // TODO fill paymentResultMessage
         publisher.publish(paymentResultMessage);
     }
 }

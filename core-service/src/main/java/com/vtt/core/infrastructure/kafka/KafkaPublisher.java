@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vtt.common.exception.InfraException;
 import com.vtt.common.kafka.Topics;
 import com.vtt.common.kafka.message.PaymentRequestMessage;
-import com.vtt.core.domain.model.Payment;
+import com.vtt.core.domain.model.PaymentRequest;
 import com.vtt.core.domain.port.payment.PaymentEventPublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,20 +23,13 @@ public class KafkaPublisher implements PaymentEventPublisher {
     private final KafkaTemplate<String, String> kafkaTemplate;
 
     @Override
-    public void publish(Payment payment) {
-        PaymentRequestMessage paymentRequestMessage = new PaymentRequestMessage(
-                String.valueOf(payment.getId()),
-                payment.getPaymentSource(),
-                payment.getDescription(),
-                payment.getAmount(),
-                payment.getBusiness(),
-                payment.getSourceId(),
-                OffsetDateTime.now()
-        );
+    public void publish(PaymentRequest paymentRequest) {
+        PaymentRequestMessage paymentRequestMessage = new PaymentRequestMessage();
+        // TODO fill data to message
         try {
             kafkaTemplate.send(Topics.DEBIT_REQUEST, objectMapper.writeValueAsString(paymentRequestMessage));
         } catch (JsonProcessingException e) {
-            throw new InfraException(e);
+            throw new RuntimeException(e);
         }
     }
 }

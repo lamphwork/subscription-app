@@ -1,6 +1,6 @@
 package com.vtt.core.infrastructure.jpa.impl;
 
-import com.vtt.core.domain.model.Payment;
+import com.vtt.core.domain.model.PaymentRequest;
 import com.vtt.core.domain.port.repository.PaymentRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,17 +10,17 @@ import java.util.Optional;
 public class FakePaymentRepository implements PaymentRepository {
 
     @Override
-    public Optional<Payment> findById(Long id) {
+    public Optional<PaymentRequest> findById(Long id) {
         return Optional.empty();
     }
 
     @Override
-    public Payment save(Payment payment) {
+    public PaymentRequest save(PaymentRequest paymentRequest) {
         return null;
     }
 
     @Override
-    public Payment update(Payment payment) {
+    public PaymentRequest update(PaymentRequest paymentRequest) {
         return null;
     }
 }
